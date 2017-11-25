@@ -1,0 +1,38 @@
+{
+  "name": "page-analyzer",
+  "version": "1.0.0",
+  "description": "App for collecting web page information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dudu84/page-analyzer.git"
+  },
+  "keywords": [
+    "nodejs",
+    "angular",
+    "page",
+    "info"
+  ],
+  "author": "Luiz Eduardo de Christo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dudu84/page-analyzer/issues"
+  },
+  "homepage": "https://github.com/dudu84/page-analyzer#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-notify": "^0.4.5"
+  }
+}

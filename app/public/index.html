@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title>Page analyzer v1.0</title>	
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+	
+		<script src="/node_modules/angular/angular.js"></script>
+		<script src="js/modules/app.js"></script>
+		<script src="js/controllers/appController.js"></script>
+		
+		
+	</head>
+	<body ng-controller="AppController as page">
+		<div class="search">
+			<label for="urlSearch">URL:</label>
+			<input id="urlSearch" name="urlSearch" type="text" ng-model="page.search"/>
+		</div>
+		<div class="result">
+		{{page.search}}
+		</div>
+		
+
+	</body>
+</html>
