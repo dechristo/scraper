@@ -9,7 +9,8 @@ router.get('/', function (req, res) {
 
 //url analysis
 router.get('/analize/:url', function (req, res) {
-	res.send(req.params.url);
+	 res.setHeader('Content-Type', 'application/json');
+	 res.send(JSON.stringify({"result":req.params.url}));
 });
 
 module.exports = router;
