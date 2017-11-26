@@ -12,12 +12,16 @@
 		
 	</head>
 	<body ng-controller="AppController as page">
-		<div class="search">
+		<div class="search"> 
 			<label for="urlSearch">URL:</label>
-			<input id="urlSearch" name="urlSearch" type="text" ng-model="page.search"/>
+			<input type="text" id="urlSearch" name="urlSearch" ng-model="page.url"/>
+			<input type="submit"  class="buttonSearch" id="buttonSearch" name="buttonSearch" ng-click="page.scrap()" value="scrap!"/>
 		</div>
 		<div class="result">
-		{{page.search}}
+			<div>{{page.pageInfo.title}}</div>
+			<div>{{page.pageInfo.htmlVersion}}</div>
+			<div>{{page.pageInfo.headings}}</div>
+			<div>{{page.pageInfo.hasLoginForm}}</div>
 		</div>
 		
 

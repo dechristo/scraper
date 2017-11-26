@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var router = express.Router();
+var pageInfoController = require('./src/controllers/pageInfoController');
 
 //home
 router.get('/', function (req, res) {
@@ -8,9 +9,6 @@ router.get('/', function (req, res) {
 });
 
 //url analysis
-router.get('/analize/:url', function (req, res) {
-	 res.setHeader('Content-Type', 'application/json');
-	 res.send(JSON.stringify({"result":req.params.url}));
-});
+router.get('/analize/:url', pageInfoController.getPageInfo);
 
 module.exports = router;

@@ -24,11 +24,14 @@
   "homepage": "https://github.com/dudu84/page-analyzer#readme",
   "dependencies": {
     "angular": "^1.6.4",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
     "http": "0.0.0",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
   },
   "devDependencies": {
+    "angular-mocks": "^1.6.7",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "grunt": "^1.0.1",
@@ -36,6 +39,12 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-notify": "^0.4.5",
+    "jasmine-core": "^2.6.2",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-spec-reporter": "0.0.31",
     "mocha": "^4.0.1",
     "supertest": "^3.0.0"
   }

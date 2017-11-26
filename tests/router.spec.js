@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 it('GET / should redirect to home', function(done) {
 	chai.request(app)
-    .get('/')
+    .get('/scrap')
     .end(function(err, res){
       res.should.have.status(200);
       res.should.have.header('content-type');
