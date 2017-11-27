@@ -28,10 +28,6 @@ exports.getPageInfo = function(req, res) {
 			headings.push($('h5').length);
 			headings.push($('h6').length);
 
-			for (let index = 0; index < headings.length; index++) {
-				console.log("h" + (index + 1) + ": " + headings[index]);
-			}
-
 			//login form
 			let passwordInput = $("[type=password]");
 				
