@@ -9,6 +9,10 @@ exports.getPageInfo = function(req, res) {
 	let hasLoginForm = false;
 
 	request(url, function(error, response, html) {
+		if (error) {
+			res.status(404).json({"error" : "Invalid or unreachable URL!"});
+			return;
+		}
 		
 		if (response && response.statusCode == 200) {
 			var $ = cheerio.load(html);

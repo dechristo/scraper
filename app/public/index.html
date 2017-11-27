@@ -11,7 +11,7 @@
 		
 		
 	</head>
-	<body ng-controller="AppController as page">
+	<body ng-controller="AppController as page" ng-cloak>
 		<div class="search"> 
 			<label for="urlSearch">URL:</label>
 			<input type="text" id="urlSearch" name="urlSearch" ng-model="page.url"/>
@@ -23,7 +23,8 @@
 			<div>Headings [h1, h2, h3, h4, h5, h6] -> {{page.pageInfo.headings}}</div>
 			<div>Has Login Form:{{page.pageInfo.hasLoginForm}}</div>
 		</div>
-		
-
+		<div class="error" ng-show="page.showError">
+			<div>Error: {{page.errorMsg}}</div>
+		</div>
 	</body>
 </html>

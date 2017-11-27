@@ -17,21 +17,30 @@ describe("Scrap controller", function() {
 
    it('should contains url var.', function(){
        expect(ScrapController.url).toBeDefined();
-    });
+   });
+   
+   it('should contains errorMsg var.', function(){
+       expect(ScrapController.url).toBeDefined();
+   });
    
    it('should contains pageInfo object defined.', function(){
        expect(ScrapController.pageInfo).toBeDefined();
        expect(typeof(ScrapController.pageInfo)).toBe('object');
+   });
+   
+   it('should contains showError var.', function(){
+       expect(ScrapController.showError).toBeDefined();
+       expect(ScrapController.showError).toBe(false);
+   });
+   
+   it('should contains showResult var.', function(){
+       expect(ScrapController.showResult).toBeDefined();
+       expect(ScrapController.showResult).toBe(false);
     });
    
    it('should contains scrap() function defined.', function(){
        expect(ScrapController.scrap).toBeDefined();
        expect(typeof(ScrapController.scrap)).toBe('function');
-    });
-   
-   it('should contains showResult var.', function(){
-       expect(ScrapController.showResult).toBeDefined();
-       expect(ScrapController.showResult).toBe(false);
     });
    
    describe('scrap()', function() {

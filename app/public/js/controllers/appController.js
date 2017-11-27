@@ -8,6 +8,8 @@ function AppController($http) {
 	vm.scrap = scrap;
 	vm.pageInfo = {};
 	vm.showResult = false;
+	vm.showError = false;
+	vm.errorMsg = ''
 
     function scrap() {
     	
@@ -20,7 +22,9 @@ function AppController($http) {
     }
     
     function handleSuccess(response) {
+    	vm.showError = false;
     	vm.showResult = true;
+    	vm.errorMsg = ''
     	vm.pageInfo.title = response.data.title;
     	vm.pageInfo.htmlVersion = response.data.htmlVersion;
     	vm.pageInfo.headings = response.data.headings;
@@ -29,5 +33,8 @@ function AppController($http) {
     
     function handleError(error) {
     	console.log(error);
+    	vm.showResult = false;
+    	vm.errorMsg = error.status + ':' + error.data.error;
+    	vm.showError = true;
     }
 }
