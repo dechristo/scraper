@@ -17,11 +17,11 @@
 			<input type="text" id="urlSearch" name="urlSearch" ng-model="page.url"/>
 			<input type="submit"  class="buttonSearch" id="buttonSearch" name="buttonSearch" ng-click="page.scrap()" value="scrap!"/>
 		</div>
-		<div class="result">
-			<div>{{page.pageInfo.title}}</div>
-			<div>{{page.pageInfo.htmlVersion}}</div>
-			<div>{{page.pageInfo.headings}}</div>
-			<div>{{page.pageInfo.hasLoginForm}}</div>
+		<div class="result" ng-show="page.showResult">
+			<div>Title: {{page.pageInfo.title}}</div>
+			<div>HTML version:{{page.pageInfo.htmlVersion}}</div>
+			<div>Headings [h1, h2, h3, h4, h5, h6] -> {{page.pageInfo.headings}}</div>
+			<div>Has Login Form:{{page.pageInfo.hasLoginForm}}</div>
 		</div>
 		
 

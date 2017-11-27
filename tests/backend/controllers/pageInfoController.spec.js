@@ -12,17 +12,16 @@ var responseMock = {
 	}
 
 describe('Page Info Controller', function() {
-	var response = http_mocks.createResponse({eventEmitter: require('events').EventEmitter});
-	var request  = http_mocks.createRequest({
+  
+	it('GET /scrap/analize/:url should return page info for valid url', function(done){
+		var response = http_mocks.createResponse();
+		var request  = http_mocks.createRequest({
 		method: 'GET',
 		url: 'http://localhost:2000/scrap/analize/',
 		params: {
-			url: encodeURIComponent('https://www.bookdepository.com')
-		}
-	});
-	  
-	it('GET /scrap/analize/:search should return json', function(done){
-				 		
+				url: encodeURIComponent('https://www.bookdepository.com')
+			}
+		});				 		
 		pageInfoController.getPageInfo(request, response);
 		
 		var data = JSON.parse(response._getData());
@@ -32,6 +31,6 @@ describe('Page Info Controller', function() {
     	expect(data.headings).to.be.an('array');
     	expect(data).to.have.property('hasLoginForm');
     	done();  			
-	})
+	})	
 });		
 

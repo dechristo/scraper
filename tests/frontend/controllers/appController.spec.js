@@ -29,6 +29,11 @@ describe("Scrap controller", function() {
        expect(typeof(ScrapController.scrap)).toBe('function');
     });
    
+   it('should contains showResult var.', function(){
+       expect(ScrapController.showResult).toBeDefined();
+       expect(ScrapController.showResult).toBe(false);
+    });
+   
    describe('scrap()', function() {
 	   it('should retrieve correct data from backend', function() {
 		

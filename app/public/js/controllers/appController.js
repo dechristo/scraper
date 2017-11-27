@@ -7,13 +7,20 @@ function AppController($http) {
 	vm.url = "";
 	vm.scrap = scrap;
 	vm.pageInfo = {};
+	vm.showResult = false;
 
     function scrap() {
+    	
+    	if (!vm.url) {
+    		return;
+    	}
+    	
     	console.log('url:' + vm.url);
         return $http.get('/scrap/analize/' + encodeURIComponent(vm.url)).then(handleSuccess, handleError);
     }
     
     function handleSuccess(response) {
+    	vm.showResult = true;
     	vm.pageInfo.title = response.data.title;
     	vm.pageInfo.htmlVersion = response.data.htmlVersion;
     	vm.pageInfo.headings = response.data.headings;

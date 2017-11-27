@@ -9,7 +9,8 @@ exports.getPageInfo = function(req, res) {
 	let hasLoginForm = false;
 
 	request(url, function(error, response, html) {
-		if (!error && response.statusCode == 200) {
+		
+		if (response && response.statusCode == 200) {
 			var $ = cheerio.load(html);
 			title = $("title").text();
 
@@ -39,24 +40,15 @@ exports.getPageInfo = function(req, res) {
 			}
 			
 			//links
-			/*let linksList = [];
-			let external = [];
+			/*
+			let external = []; //contains www
 			let links = $('a')
 			 $(links).each(function(i, link){
 				 //linksList.push($(link).attr('href'))
 				 if (($(link).attr('href')).indexOf('www')) {
 					 external.push($(link).attr('href'));
 				 }
-			 });
-			
-			console.log(external + "\n");
-			console.log("-------------------------------------------/n");
-			let src = $('script[src]');
-			//console.log(src + "\n");
-			//console.log("-------------------------------------------/n");
-			let css = $('link[href]');
-			//console.log(css + "\n");
-			///console.log("-------------------------------------------/n");*/
+			 });*/
 		}
 
 		res.setHeader('Content-Type', 'application/json; charset=UTF-8');
