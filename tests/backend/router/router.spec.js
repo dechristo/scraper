@@ -1,6 +1,6 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
-const app = require('../../../app')
+var app = require('../../../app');
 var should = chai.should();
 
 
@@ -29,4 +29,4 @@ describe('Router endpoints', function() {
 	      done();
 	    });
 	});
-})
+});

@@ -1,14 +1,14 @@
-const expect = require('chai').expect;
-const nock = require('nock');
-const pageInfoController = require('../../../app/src/controllers/pageInfoController');
-const http_mocks = require('node-mocks-http')
-const should = require('should')
+var expect = require('chai').expect;
+var nock = require('nock');
+var pageInfoController = require('../../../app/src/controllers/pageInfoController');
+var http_mocks = require('node-mocks-http');
+var should = require('should');
 
 describe('Page Info Controller', function() {
   
 	it('GET /scrap/analize/:url should return page info for valid url', function(done){
-		let response = http_mocks.createResponse({eventEmitter : require('events').EventEmitter});
-		let request  = http_mocks.createRequest({
+		var response = http_mocks.createResponse({eventEmitter : require('events').EventEmitter});
+		var request  = http_mocks.createRequest({
 			method: 'GET',
 			url: 'http://localhost:2000/scrap/analize/',
 			params: {
@@ -20,7 +20,7 @@ describe('Page Info Controller', function() {
 		
 		response
 			.on('end', function() {
-				let data = JSON.parse(response._getData());
+				var data = JSON.parse(response._getData());
 		    	expect(data).to.have.property('title');
 		    	expect(data.title).to.be.equal('\n\tBook Depository: Millions of books with free delivery worldwide');
 		    	expect(data).to.have.property('htmlVersion');
@@ -28,12 +28,12 @@ describe('Page Info Controller', function() {
 		    	expect(data.headings).to.be.an('array');
 		    	expect(data).to.have.property('hasLoginForm');
 		    	done();
-			})		  			
-	})	
+			});		  			
+	});	
 	
 	it('GET /scrap/analize/:url should return error for invalid url', function(done){
-		let response = http_mocks.createResponse();
-		let request  = http_mocks.createRequest({
+		var response = http_mocks.createResponse();
+		var request  = http_mocks.createRequest({
 			method: 'GET',
 			url: 'http://localhost:2000/scrap/analize/',
 			params: {
@@ -41,13 +41,12 @@ describe('Page Info Controller', function() {
 			}
 		});	
 		
-		pageInfoController.getPageInfo(request, response);
+		pageInfoController.getPageInfo(request, response);		
 		
-		
-		let data = JSON.parse(response._getData());
+		var data = JSON.parse(response._getData());
 		expect(data).to.have.property('error');
 		done();
 				  			
-	})	
+	});
 });		
 

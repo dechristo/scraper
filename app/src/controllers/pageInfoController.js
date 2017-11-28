@@ -2,11 +2,11 @@ var cheerio = require('cheerio');
 var request = require('request');
 
 exports.getPageInfo = function(req, res) {
-	let url = req.params.url;
-	let htmlVersion = "";
-	let title = "";
-	let headings = [];
-	let hasLoginForm = false;
+	var url = req.params.url;
+	var htmlVersion = "";
+	var title = "";
+	var headings = [];
+	var hasLoginForm = false;
 
 	request(url, function(error, response, html) {
 		if (error) {
@@ -34,11 +34,11 @@ exports.getPageInfo = function(req, res) {
 			headings.push($('h6').length);
 
 			//login form
-			let passwordInput = $("[type=password]");
+			var passwordInput = $("[type=password]");
 				
 			if (passwordInput[0] &&
-				passwordInput[0]["name"] == "input"	&&
-				passwordInput[0]["attribs"]["type"] == 'password') {
+				passwordInput[0].name == "input"	&&
+				passwordInput[0].attribs.type == 'password') {
 				
 				hasLoginForm = true;
 			}

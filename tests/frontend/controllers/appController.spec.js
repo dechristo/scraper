@@ -36,12 +36,12 @@ describe("Scrap controller", function() {
    it('should contains showResult var.', function(){
        expect(ScrapController.showResult).toBeDefined();
        expect(ScrapController.showResult).toBe(false);
-    });
+   });
    
    it('should contains scrap() function defined.', function(){
        expect(ScrapController.scrap).toBeDefined();
        expect(typeof(ScrapController.scrap)).toBe('function');
-    });
+   });
    
    describe('scrap()', function() {
 	   it('should retrieve correct data from backend', function() {
@@ -54,7 +54,7 @@ describe("Scrap controller", function() {
 			   			hasLoginForm: true
 				   });
 
-		   url = 'https://www.bookdepository.com';
+		   var url = 'https://www.bookdepository.com';
 		   ScrapController.url = url;
 		   ScrapController.scrap();
 		    
