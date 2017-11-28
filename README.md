@@ -1,6 +1,6 @@
 # Scraper
 
-# 1. Solution description
+# 1. Description
 The application was developed with Angular 1.x for frontend and Karma-Jasmine for tests. The backend was implemented with Node.js using **Express** and **Cheerio**. The router was decoupled from the server script (app.js) so as the controller. The controller gatters all the data using **requests** and **cheerio** modules. For testing the modules used were: **mocha**, **chai** and **node_mocks_http**.
 
 The application was developed and tested on a Linux Mint OS.
