@@ -19,9 +19,11 @@
 		</div>
 		<div class="result" ng-show="page.showResult">
 			<div>Title: {{page.pageInfo.title}}</div>
-			<div>HTML version:{{page.pageInfo.htmlVersion}}</div>
+			<div>HTML version: {{page.pageInfo.htmlVersion}}</div>
 			<div>Headings [h1, h2, h3, h4, h5, h6] -> {{page.pageInfo.headings}}</div>
-			<div>Has Login Form:{{page.pageInfo.hasLoginForm}}</div>
+			<div>Has Login Form: {{page.pageInfo.hasLoginForm}}</div>
+			<div>External links: {{page.pageInfo.externalLinks}}</div>
+			<div>Internal links: {{page.pageInfo.internalLinks}}</div>
 		</div>
 		<div class="error" ng-show="page.showError">
 			<div>Error: {{page.errorMsg}}</div>

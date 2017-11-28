@@ -33,6 +33,8 @@ function AppController($http) {
     	vm.pageInfo.htmlVersion = response.data.htmlVersion;
     	vm.pageInfo.headings = response.data.headings;
     	vm.pageInfo.hasLoginForm = response.data.hasLoginForm;
+    	vm.pageInfo.externalLinks = response.data.externalLinks;
+    	vm.pageInfo.internalLinks = response.data.internalLinks;
     }
     
     function handleError(error) {

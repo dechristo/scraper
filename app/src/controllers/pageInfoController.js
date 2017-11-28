@@ -7,6 +7,10 @@ exports.getPageInfo = function(req, res) {
 	var title = "";
 	var headings = [];
 	var hasLoginForm = false;
+	var links = {
+			internal : [],
+			external: []
+		};
 
 	request(url, function(error, response, html) {
 		if (error) {
@@ -44,15 +48,18 @@ exports.getPageInfo = function(req, res) {
 			}
 			
 			//links
-			/*
-			let external = []; //contains www
-			let links = $('a')
-			 $(links).each(function(i, link){
-				 //linksList.push($(link).attr('href'))
-				 if (($(link).attr('href')).indexOf('www')) {
-					 external.push($(link).attr('href'));
-				 }
-			 });*/
+			var pageLinks = $('a');
+						
+			$(pageLinks).each(function(i, link){
+				if (!($(link).attr('href')))
+					return;
+				
+				if(!$(link).attr('href').indexOf('http')) {
+					links.external.push($(link).attr('href'));
+				} else {
+					links.internal.push($(link).attr('href'));
+				}
+			});
 		}
 
 		res.setHeader('Content-Type', 'application/json; charset=UTF-8');
@@ -60,7 +67,9 @@ exports.getPageInfo = function(req, res) {
 			"htmlVersion" : htmlVersion,
 			"title" : title,
 			"headings" : headings,
-			"hasLoginForm" : hasLoginForm
+			"hasLoginForm" : hasLoginForm,
+			"internalLinks" : links.internal.length,
+			"externalLinks" : links.external.length
 		}));
 	});
 };
