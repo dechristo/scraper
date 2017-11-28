@@ -56,6 +56,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-notify');
 
     grunt.task.run('notify_hooks');
-    grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'watch']);
-
+    //grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'watch']);
+	grunt.registerTask('default', ['jshint', 'uglify', 'cssmin']);
 };
