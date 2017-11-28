@@ -1,6 +1,6 @@
-describe("Scrap controller", function() {
+describe("App controller", function() {
    var $controller;
-   var ScrapController;
+   var AppController;
    var httpBackend;
 
    beforeEach(angular.mock.module('app'));
@@ -8,39 +8,44 @@ describe("Scrap controller", function() {
    beforeEach(inject(function(_$httpBackend_, _$controller_) {
 	   httpBackend = _$httpBackend_;
        $controller = _$controller_;
-       ScrapController = $controller('AppController', {});
+       AppController = $controller('AppController', {});
    }));
 
    it('should be defined.', function() {
-        expect(ScrapController).toBeDefined();
+        expect(AppController).toBeDefined();
    });
 
    it('should contains url var.', function(){
-       expect(ScrapController.url).toBeDefined();
+       expect(AppController.url).toBeDefined();
    });
    
    it('should contains errorMsg var.', function(){
-       expect(ScrapController.url).toBeDefined();
+       expect(AppController.url).toBeDefined();
    });
    
    it('should contains pageInfo object defined.', function(){
-       expect(ScrapController.pageInfo).toBeDefined();
-       expect(typeof(ScrapController.pageInfo)).toBe('object');
+       expect(AppController.pageInfo).toBeDefined();
+       expect(typeof(AppController.pageInfo)).toBe('object');
    });
    
    it('should contains showError var.', function(){
-       expect(ScrapController.showError).toBeDefined();
-       expect(ScrapController.showError).toBe(false);
+       expect(AppController.showError).toBeDefined();
+       expect(AppController.showError).toBe(false);
    });
    
    it('should contains showResult var.', function(){
-       expect(ScrapController.showResult).toBeDefined();
-       expect(ScrapController.showResult).toBe(false);
+       expect(AppController.showResult).toBeDefined();
+       expect(AppController.showResult).toBe(false);
+   });
+
+   it('should contains showLoader var.', function() {
+       expect(AppController.showResult).toBeDefined();
+	   expect(AppController.showResult).toBe(false);
    });
    
    it('should contains scrap() function defined.', function(){
-       expect(ScrapController.scrap).toBeDefined();
-       expect(typeof(ScrapController.scrap)).toBe('function');
+       expect(AppController.scrap).toBeDefined();
+       expect(typeof(AppController.scrap)).toBe('function');
    });
    
    describe('scrap()', function() {
@@ -55,16 +60,16 @@ describe("Scrap controller", function() {
 				   });
 
 		   var url = 'https://www.bookdepository.com';
-		   ScrapController.url = url;
-		   ScrapController.scrap();
+		   AppController.url = url;
+		   AppController.scrap();
 		    
 		   expect(httpBackend.flush).not.toThrow();
 		  		  
-		   expect(ScrapController.pageInfo.title).toEqual('Book Depository');
-		   expect(ScrapController.pageInfo.htmlVersion).toEqual('HTML 5');
-		   expect(ScrapController.pageInfo.headings instanceof Array).toBe(true);
-		   expect(ScrapController.pageInfo.headings).toEqual([1,14,98,5,0,0]);
-	       expect(ScrapController.pageInfo.hasLoginForm).toEqual(true);
+		   expect(AppController.pageInfo.title).toEqual('Book Depository');
+		   expect(AppController.pageInfo.htmlVersion).toEqual('HTML 5');
+		   expect(AppController.pageInfo.headings instanceof Array).toBe(true);
+		   expect(AppController.pageInfo.headings).toEqual([1,14,98,5,0,0]);
+	       expect(AppController.pageInfo.hasLoginForm).toEqual(true);
 	    });
 	});
 });

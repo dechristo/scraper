@@ -9,6 +9,7 @@ function AppController($http) {
 	vm.pageInfo = {};
 	vm.showResult = false;
 	vm.showError = false;
+	vm.showLoader = false;
 	vm.errorMsg = ''
 
     function scrap() {
@@ -17,12 +18,15 @@ function AppController($http) {
     		return;
     	}
     	
-    	console.log('url:' + vm.url);
+    	vm.showError = false;
+    	vm.showLoader = false;
+    	vm.showLoader = true;
         return $http.get('/scrap/analize/' + encodeURIComponent(vm.url)).then(handleSuccess, handleError);
     }
     
     function handleSuccess(response) {
-    	vm.showError = false;
+    	vm.showLoader = false;
+		vm.showError = false;
     	vm.showResult = true;
     	vm.errorMsg = ''
     	vm.pageInfo.title = response.data.title;
@@ -32,7 +36,7 @@ function AppController($http) {
     }
     
     function handleError(error) {
-    	console.log(error);
+    	vm.showLoader = false;
     	vm.showResult = false;
     	vm.errorMsg = error.status + ':' + error.data.error;
     	vm.showError = true;
