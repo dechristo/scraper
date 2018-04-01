@@ -1,14 +1,17 @@
-var express = require('express');
-var path = require('path');
-var router = express.Router();
-var pageInfoController = require('./src/controllers/pageInfoController');
+const express = require('express');
+const router = express.Router();
+const pageInfoController = require('./src/controllers/pageInfoController');
 
 //home
-router.get('/', function (req, res) {
-	res.sendFile(__dirname + '/public/index.html');
+router.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 //url analysis
-router.get('/analize/:url', pageInfoController.getPageInfo);
-
+router.get('/analize/:url', (req, res) => {
+    const url = req.params.url;    
+    let info = pageInfoController.getPageInfo(url);
+    res.setHeader('Content-Type', 'application/json; charset=UTF-8');
+    res.status(200).json(info);
+});
 module.exports = router;

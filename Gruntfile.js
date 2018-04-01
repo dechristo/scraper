@@ -7,7 +7,7 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
-       
+
        notify_hooks: {
           options: {
             enabled: true,
@@ -17,9 +17,12 @@ module.exports = function(grunt) {
        },
 
        jshint: {
-          files: ['Gruntfile.js', 'app.js', 'router.js','tests/**/*.spec.js', 'app/src/**/*.js']
-        },
-        
+		  files: ['Gruntfile.js', 'app.js', 'router.js','tests/**/*.spec.js', 'app/src/**/*.js'],
+		  options: {
+			'esversion': 6,
+		  }
+		},
+
  		uglify: {
     		options: {
       			mangle: false
@@ -27,14 +30,14 @@ module.exports = function(grunt) {
     		my_target: {
       			files: {
         			'app/public/release/js/appController.min.js': ['app/public/js/controllers/appController.js'],
-					'app/public/release/js/app.min.js' : ['app/public/js/modules/app.js']
+					'app/public/release/js/app.min.js' : ['app/public/js/modules/server.js']
    		 		}
 			}
  		},
 
 		cssmin: {
  			options: {
-    			mergeIntoShorthands: false,	
+    			mergeIntoShorthands: false,
   			},
   			target: {
     			files: {
@@ -45,9 +48,9 @@ module.exports = function(grunt) {
 
         watch: {
            files: ['<%= jshint.files %>'],
-           tasks: ['jshint'],
-        }      
-    });
+           tasks: ['jshint']
+        }
+	});
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -57,5 +60,5 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
     //grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'watch']);
-	grunt.registerTask('default', ['jshint', 'uglify', 'cssmin']);
+	grunt.registerTask('default', ['jshint']);
 };
