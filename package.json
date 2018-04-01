@@ -4,7 +4,11 @@
   "description": "App for collecting web page information",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/backend/**/**.spec.js --timeout 10000 --exit"
+    "test-backend": "mocha tests/backend/**/**.spec.js --timeout 10000 --exit",
+    "test-frontend": "karma start",
+    "tests": "karma start || npm test",
+    "start": "node app/server.js",
+    "build": "npm install && grunt"
   },
   "repository": {
     "type": "git",

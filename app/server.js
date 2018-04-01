@@ -1,6 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
-var router = require('./app/router');
+var router = require('./router');
 var http = require ('http');
 
 var app = express();

@@ -1,13 +1,13 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
-var app = require('../../../app');
+var app = require('../../../app/server');
 var should = chai.should();
 
 
 chai.use(chaiHttp);
 
 describe('Router endpoints', function() {
-	
+
 	it('GET / should redirect to home', function(done) {
 		chai.request(app)
 	    .get('/scrap')
@@ -19,7 +19,7 @@ describe('Router endpoints', function() {
 	      done();
 	    });
 	});
-	
+
 	it('GET /scrap/analize/:search should return json', function(done) {
 		chai.request(app)
 	    .get('/scrap/analize/' + encodeURIComponent('https://www.bookdepository.com'))
