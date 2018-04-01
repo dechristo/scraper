@@ -1,75 +1,99 @@
-var cheerio = require('cheerio');
-var request = require('request');
+const cheerio = require('cheerio');
+const request = require('request');
 
-exports.getPageInfo = function(req, res) {
-	var url = req.params.url;
-	var htmlVersion = "";
-	var title = "";
-	var headings = [];
-	var hasLoginForm = false;
-	var links = {
-			internal : [],
-			external: []
-		};
+const getPageInfo = async (uri) => {
+    const url = uri;
+    let result;
+    
+    try {
+        result = await doGetRequest(url);
+    } catch (err) {
+        return {"error": "Invalid or unreachable URL!"};
+    }
 
-	request(url, function(error, response, html) {
-		if (error) {
-			res.status(404).json({"error" : "Invalid or unreachable URL!"});
-			return;
-		}
-		
-		if (response && response.statusCode == 200) {
-			var $ = cheerio.load(html);
-			title = $("title").text();
+    const $ = cheerio.load(result);
+    const links = getLinks($);
 
-			//html version
-			if (html.includes('<!DOCTYPE html>') || html.includes('<!DOCTYPE HTML>')) {
-				htmlVersion = 'HTML 5';
-			} else {
-				htmlVersion = 'HTML <= 4';
-			}
+    let responseObj = {
+        "htmlVersion": getHtmlVersion(result),
+        "title": getTitle($),
+        "headings": getHeadings($),
+        "hasLoginForm": hasLoginForm($),
+        "internalLinks": links.internal.length,
+        "externalLinks": links.external.length
+    };
+    return responseObj;
+};
 
-			//headings
-			headings.push($('h1').length);
-			headings.push($('h2').length);
-			headings.push($('h3').length);
-			headings.push($('h4').length);
-			headings.push($('h5').length);
-			headings.push($('h6').length);
+const getHtmlVersion = (data) => {
+    if (data.includes('<!DOCTYPE html>') || result.includes('<!DOCTYPE HTML>')) { 
+        return 'HTML 5';
+    }
+    return htmlVersion = 'HTML <= 4';
+};
 
-			//login form
-			var passwordInput = $("[type=password]");
-				
-			if (passwordInput[0] &&
-				passwordInput[0].name == "input"	&&
-				passwordInput[0].attribs.type == 'password') {
-				
-				hasLoginForm = true;
-			}
-			
-			//links
-			var pageLinks = $('a');
-						
-			$(pageLinks).each(function(i, link){
-				if (!($(link).attr('href')))
-					return;
-				
-				if(!$(link).attr('href').indexOf('http')) {
-					links.external.push($(link).attr('href'));
-				} else {
-					links.internal.push($(link).attr('href'));
-				}
-			});
-		}
+const getTitle = ($) => {
+    return $("title").text();
+};
 
-		res.setHeader('Content-Type', 'application/json; charset=UTF-8');
-		res.send(JSON.stringify({
-			"htmlVersion" : htmlVersion,
-			"title" : title,
-			"headings" : headings,
-			"hasLoginForm" : hasLoginForm,
-			"internalLinks" : links.internal.length,
-			"externalLinks" : links.external.length
-		}));
-	});
+const getHeadings = ($) => {
+    let headings = [];
+
+    headings.push($('h1').length);
+    headings.push($('h2').length);
+    headings.push($('h3').length);
+    headings.push($('h4').length);
+    headings.push($('h5').length);
+    headings.push($('h6').length);
+
+    return headings;
+};
+
+const hasLoginForm = ($) => {
+    let passwordInput = $("[type=password]");
+    let hasLoginForm = false;
+
+    if (passwordInput[0] &&
+        passwordInput[0].name === "input" &&
+        passwordInput[0].attribs.type === 'password') {
+
+        hasLoginForm = true;
+    }
+};
+
+const getLinks = ($) => {
+    let links = {
+        internal: [],
+        external: []
+    };
+
+    let pageLinks = $('a');
+
+    $(pageLinks).each(function (i, link) {
+        if (!($(link).attr('href')))
+            return;
+        if (!$(link).attr('href').indexOf('http')) {
+            links.external.push($(link).attr('href'));
+        } else {
+            links.internal.push($(link).attr('href'));
+        }
+    });
+
+    return links;
+};
+
+const doGetRequest = (url) => {
+    return new Promise((resolve, reject) => {
+        request.get(url, (error, response, body) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(body)
+            }
+        });
+    });
+};
+
+module.exports = {
+    getPageInfo
 };

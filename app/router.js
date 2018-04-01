@@ -8,6 +8,10 @@ router.get('/', (req, res) => {
 });
 
 //url analysis
-router.get('/analize/:url', pageInfoController.getPageInfo);
-
+router.get('/analize/:url', (req, res) => {
+    const url = req.params.url;    
+    let info = pageInfoController.getPageInfo(url);
+    res.setHeader('Content-Type', 'application/json; charset=UTF-8');
+    res.status(200).json(info);
+});
 module.exports = router;

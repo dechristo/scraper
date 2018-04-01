@@ -17,8 +17,11 @@ module.exports = function(grunt) {
        },
 
        jshint: {
-          files: ['Gruntfile.js', 'app.js', 'router.js','tests/**/*.spec.js', 'app/src/**/*.js']
-        },
+		  files: ['Gruntfile.js', 'app.js', 'router.js','tests/**/*.spec.js', 'app/src/**/*.js'],
+		  options: {
+			'esversion': 6,
+		  }
+		},
 
  		uglify: {
     		options: {
@@ -45,9 +48,9 @@ module.exports = function(grunt) {
 
         watch: {
            files: ['<%= jshint.files %>'],
-           tasks: ['jshint'],
+           tasks: ['jshint']
         }
-    });
+	});
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -57,5 +60,5 @@ module.exports = function(grunt) {
 
     grunt.task.run('notify_hooks');
     //grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'watch']);
-	grunt.registerTask('default', ['jshint', 'uglify', 'cssmin']);
+	grunt.registerTask('default', ['jshint']);
 };
