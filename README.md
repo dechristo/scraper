@@ -16,7 +16,7 @@ Just type `make build` at the project root folder (where the Makefile is located
 
 ## 2.3 Testing
 ### 2.3.1 Frontend
-Type `tests-frontend`
+Type `make tests-frontend`
 The output should looks like:
 
 	28 11 2017 11:20:35.483:INFO [karma]: Karma v1.7.1 server started at http://0.0.0.0:9876/
@@ -40,7 +40,7 @@ The output should looks like:
 	TOTAL: 9 SUCCESS
 	
 ### 2.3.2 Backend
-Type `tests-backend`
+Type `make tests-backend`
 The output should looks like:
 
 	Server started on port 2000.
