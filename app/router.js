@@ -1,11 +1,10 @@
-var express = require('express');
-var path = require('path');
-var router = express.Router();
-var pageInfoController = require('./src/controllers/pageInfoController');
+const express = require('express');
+const router = express.Router();
+const pageInfoController = require('./src/controllers/pageInfoController');
 
 //home
-router.get('/', function (req, res) {
-	res.sendFile(__dirname + '/public/index.html');
+router.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 //url analysis
