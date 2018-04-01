@@ -72,7 +72,7 @@ const getLinks = ($) => {
     $(pageLinks).each(function (i, link) {
         if (!($(link).attr('href')))
             return;
-        if (!$(link).attr('href').indexOf('http')) {
+        if ($(link).attr('href').indexOf('http') >= 0) {
             links.external.push($(link).attr('href'));
         } else {
             links.internal.push($(link).attr('href'));
