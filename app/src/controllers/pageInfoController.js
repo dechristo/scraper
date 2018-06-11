@@ -6,7 +6,7 @@ const getPageInfo = async (uri) => {
     let result;
     
     try {
-        result = await doGetRequest(url);
+        result = await doGetRequest(url);      
     } catch (err) {
         return {"error": "Invalid or unreachable URL!"};
     }
@@ -21,7 +21,7 @@ const getPageInfo = async (uri) => {
         "hasLoginForm": hasLoginForm($),
         "internalLinks": links.internal.length,
         "externalLinks": links.external.length
-    };
+    };   
     return responseObj;
 };
 
@@ -59,6 +59,8 @@ const hasLoginForm = ($) => {
 
         hasLoginForm = true;
     }
+
+    return hasLoginForm;
 };
 
 const getLinks = ($) => {
