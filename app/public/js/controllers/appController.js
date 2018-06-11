@@ -25,7 +25,8 @@ function AppController($http) {
     }
     
     function handleSuccess(response) {
-    	vm.showLoader = false;
+		console.log(response);
+		vm.showLoader = false;
 		vm.showError = false;
     	vm.showResult = true;
     	vm.errorMsg = ''
