@@ -39,6 +39,8 @@ label {
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   padding: 3px;
+  border: 0px;
+  width: 100px;
 }
 
 .buttonSearch:hover {
@@ -49,9 +51,12 @@ label {
   background-image: -o-linear-gradient(top, #3cfc43, #0dff00);
   background-image: linear-gradient(to bottom, #3cfc43, #0dff00);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .result {
+	padding-left: 4px;
+	padding-top: 4px;
 	width: 600px;
 	font-family: Arial;
 	font-size: 18px;
@@ -60,6 +65,8 @@ label {
 	margin-top: 20px;
 	color: #10b51d;
 	background-color: #9effa6;
+	border-radius: 4px;
+	box-shadow: 5px 10px #888888;
 }
 
 .error {
