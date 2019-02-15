@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/dudu84/page-analyzer#readme",
   "dependencies": {
+    "angular6": "^1.0.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "http": "0.0.0",

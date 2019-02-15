@@ -34,10 +34,13 @@ class PageInformationService {
     }
 
     getHtmlVersion(data) {
-        if (data.includes('<!DOCTYPE html>') || data.includes('<!DOCTYPE HTML>')) {
-            return 'HTML 5';
-        }
-        return htmlVersion = 'HTML <= 4';
+        return this.isHtml5(data) ? 'HTML 5' : 'HTML <= 4';
+    }
+
+    isHtml5(data) {
+        return data.includes('<!doctype html>') || 
+        data.includes('<!DOCTYPE html>') ||
+        data.includes('<!DOCTYPE HTML>');
     }
 
     getTitle($) {
