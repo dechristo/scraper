@@ -3,7 +3,7 @@ const router = express.Router();
 const PageInformationController = require('./src/controllers/pageInformationController');
 
 router.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/web/scraper/src/index.html');
 });
 
 router.get('/analize/:url', PageInformationController.getPageInformation);
