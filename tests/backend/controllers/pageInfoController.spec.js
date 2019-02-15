@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var pageInfoController = require('../../../app/src/controllers/pageInfoController');
-var http_mocks = require('sinon')
+var http_mocks = require('sinon');
 var should = require('should');
 
 describe('Page Info Controller', () => {
