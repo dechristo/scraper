@@ -1,4 +1,4 @@
-const PageInformationService = require('../services/pageInformationService')
+const PageInformationService = require('../services/pageInformationService');
 
 class PageInformationController {
 
