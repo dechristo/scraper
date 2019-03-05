@@ -3,18 +3,18 @@ const httpUtils = require('./../utils/httpUtils');
 
 class PageInformationService {
 
+    constructor() {}
+
     async getPageInformation(url) {
         const response = await this.buildPageInformation(url);
         return response;
     }
 
     async buildPageInformation(url) {
-        let result;
-        console.log('url:', url);
+        let result;       
         try {
             result = await httpUtils.doGetRequest('http://' + url);
-        } catch (err) {
-            console.log('e:', err);
+        } catch (err) {            
             return { "error": err };
         }
 
