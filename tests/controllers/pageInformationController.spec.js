@@ -5,7 +5,7 @@ const mocks = require('node-mocks-http');
 const PageInfoController = require("../../app/src/controllers/pageInformationController");
 const PageInformationService = require("./../../app/src/services/pageInformationService");
 
-describe("Page Info Controller", () => {
+describe("Page Information Controller", () => {
     it("GET /scrap/analize/:url should return json data for valid url", async () => {
         mockRequest = mocks.createRequest();
         mockResponse = mocks.createResponse();
