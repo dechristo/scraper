@@ -1,4 +1,4 @@
-# Scraper [![Build Status](https://travis-ci.org/dechristo/scraper.svg?branch=master)](https://travis-ci.org/dechristo/scraper) [![Coverage Status](https://coveralls.io/repos/github/OpenSourceHelpCommunity/OpenSourceHelpCommunity.github.io/badge.svg?branch=develop)](https://coveralls.io/github/OpenSourceHelpCommunity/OpenSourceHelpCommunity.github.io?branch=develop)
+# Scraper [![Build Status](https://travis-ci.org/dechristo/scraper.svg?branch=master)](https://travis-ci.org/dechristo/scraper) [![Coverage Status](https://coveralls.io/repos/github/dechristo/scraper/badge.svg)](https://coveralls.io/github/dechristo/scraper)
 
 ## 1. Description
 The application is being developed using **Angular 6** and **Node.js** with **Express** framework.
