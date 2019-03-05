@@ -1,4 +1,4 @@
-# Scraper [![Build Status](https://travis-ci.org/dechristo/scraper.svg?branch=master)](https://travis-ci.org/dechristo/scraper) [![Known Vulnerabilities](https://snyk.io/test/github/dechristo/scraper/badge.svg)](https://snyk.io/test/github/dechristo/scraper)
+# Scraper [![Build Status](https://travis-ci.org/dechristo/scraper.svg?branch=master)](https://travis-ci.org/dechristo/scraper) [![Known Vulnerabilities](https://snyk.io/test/github/dechristo/scraper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/dechristo/scraper?targetFile=package.json)
 
 ## 1. Description
 The application is being developed using **Angular 6** and **Node.js** with **Express** framework.
