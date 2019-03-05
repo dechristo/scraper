@@ -1,4 +1,4 @@
-# Scraper
+# Scraper [![Build Status](https://travis-ci.org/dechristo/scraper.svg?branch=master)](https://travis-ci.org/dechristo/scraper)
 
 ## 1. Description
 The application is being developed using **Angular 6** and **Node.js** with **Express** framework.
